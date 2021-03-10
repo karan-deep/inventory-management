@@ -18,7 +18,12 @@
             class="input100"
             type="email"
             name="email"
+            [(ngModel)]="login.email"
             placeholder="Enter Email"
+            #email="ngModel"
+            ngModel
+            required
+            email
           />
           <span class="focus-input100"></span>
         </div>
@@ -33,7 +38,12 @@
             class="input100"
             type="password"
             name="password"
+            [(ngModel)]="login.password"
             placeholder="Enter Password"
+            #password="ngModel"
+            ngModel
+            minlength="6"
+            required
           />
           <span class="focus-input100"></span>
         </div>
