@@ -84,3 +84,27 @@ server.post("/auth/login", async (req, res) => {
   }
 });
 
+server.use(/^(?!\/auth).*$/, (req, res, next) => {
+  if (
+    req.headers.authorization === undefined ||
+    req.headers.authorization.split(" ")[0] !== "Bearer"
+  ) {
+    res.status(401).json({ message: "Not Authorized" });
+    return;
+  }
+  try {
+    let verifyTokenResult;
+    verifyTokenResult = verifyToken(req.headers.authorization.split(" ")[1]);
+    if (verifyTokenResult instanceof Error) {
+      res.status(401).json({ message: "Not Authorized" });
+      return;
+    }
+    next();
+  } catch (err) {
+    res.status(401).json({ message: "Not Authorized" });
+  }
+});
+
+server.use(router);
+
+server.listen(3000, () => {});
