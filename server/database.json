@@ -1,0 +1,44 @@
+{
+  "inventories": [
+    {
+      "id": 1,
+      "stockNumber": 101,
+      "year": 2020,
+      "make": 2015,
+      "model": "Cruze",
+      "trim": "LX",
+      "status": 1,
+      "VIN": "1GCRCSE0XBZ305958",
+      "stockDate": "2018-02-25"
+    },
+    {
+      "id": 2,
+      "stockNumber": 102,
+      "year": 2019,
+      "make": 2017,
+      "model": "Civic",
+      "trim": "LD",
+      "status": 2,
+      "VIN": "1GCRCSE0XBZ235958",
+      "stockDate": "2017-03-20"
+    },
+    {
+      "id": 3,
+      "stockNumber": 103,
+      "year": 2018,
+      "make": 2014,
+      "model": "Highlander",
+      "trim": "DL",
+      "status": 3,
+      "VIN": "1GCRC32E0XBZ305958",
+      "stockDate": "2019-01-25"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "test@gmail.com",
+      "password": "$2a$04$F2FpLJFk.F1ItK4wvtCXNO8fbHlhD0KHsYirSwPEfG9Lrs1ZaQw3q"
+    }
+  ]
+}
