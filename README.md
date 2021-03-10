@@ -1,27 +1,29 @@
-# InventoryManagement
+# Inventory Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+## Steps to access Inventory Management
 
-## Development server
+1. Login to your account if already registered through login page.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![image](https://user-images.githubusercontent.com/77373766/110677945-9928f400-818a-11eb-8711-09fdc9972380.png)
 
-## Code scaffolding
+2. Go to register page if you are a new user.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![image](https://user-images.githubusercontent.com/77373766/110677990-a6de7980-818a-11eb-93dc-37eab7b3e725.png)
 
-## Build
+3. After successfully login, you can manage your inventory.
+ 
+![image](https://user-images.githubusercontent.com/77373766/110678241-ed33d880-818a-11eb-82bd-a1828c77adac.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4. To add a inventory, click on Add button.
 
-## Running unit tests
+![image](https://user-images.githubusercontent.com/77373766/110678320-0472c600-818b-11eb-9234-0324ed840c66.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. To edit a inventory, click on Edit button.
 
-## Running end-to-end tests
+![image](https://user-images.githubusercontent.com/77373766/110678359-12c0e200-818b-11eb-9285-b161c06a81ee.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+5. To delete a inventory, click on Delete button.
 
-## Further help
+![image](https://user-images.githubusercontent.com/77373766/110678241-ed33d880-818a-11eb-82bd-a1828c77adac.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Following these steps, you can manage your inventory.
