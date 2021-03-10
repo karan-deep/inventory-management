@@ -9,8 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
+import { MustMatchDirective } from './directives/must-match/must-match.directive';
 
 @NgModule({
+  declarations: [MustMatchDirective],
   imports: [
     MatTableModule,
     MatAutocompleteModule,
@@ -22,8 +24,10 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
+    ModalModule.forRoot(),
   ],
   exports: [
+    MustMatchDirective,
     MatTableModule,
     MatAutocompleteModule,
     MatCheckboxModule,
