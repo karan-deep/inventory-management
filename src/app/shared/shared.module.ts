@@ -9,6 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { MustMatchDirective } from './directives/must-match/must-match.directive';
 
 @NgModule({
@@ -38,6 +42,11 @@ import { MustMatchDirective } from './directives/must-match/must-match.directive
     MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
+    ModalModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
 })
 export class SharedModule {}
