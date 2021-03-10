@@ -38,6 +38,37 @@ async function isAuthenticated(email, password) {
   return true;
 }
 
+server.post("/auth/register", async (req, res) => {
+  try {
+    const db = JSON.parse(fs.readFileSync("./server/database.json", "UTF-8"));
+    const { email, password } = req.body;
+    if (db.users.find((user) => user.email === email)) {
+      res.status(400).json({ message: "Email already exist." });
+      return;
+    }
+    let last_id = db.users[db.users.length - 1].id;
+    let hashPassword = await bcrypt.hash(password, 10);
+    db.users.push({
+      id: last_id + 1,
+      email: email,
+      password: hashPassword,
+    });
+    fs.writeFile(
+      "./server/database.json",
+      JSON.stringify(db),
+      (err, result) => {
+        if (err) {
+          res.status(400).json({ message: err });
+          return;
+        }
+      }
+    );
+    res.json();
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 server.post("/auth/login", async (req, res) => {
   try {
     const { email, password } = req.body;
