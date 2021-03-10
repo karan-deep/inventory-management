@@ -28,5 +28,9 @@ export class AuthService {
   }
 
   constructor(private http: HttpClient, private router: Router) {
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.isLoggedIn = true;
+    }
   }
 }
