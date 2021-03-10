@@ -38,3 +38,18 @@ async function isAuthenticated(email, password) {
   return true;
 }
 
+server.post("/auth/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const authenticated = await isAuthenticated(email, password);
+    if (!authenticated) {
+      res.status(400).json({ message: "Invalid login credentials" });
+      return;
+    }
+    const token = createToken({ email, password });
+    res.status(200).json({ token });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
