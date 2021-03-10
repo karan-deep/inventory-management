@@ -1,0 +1,125 @@
+<div class="limiter col-sm-12">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title">
+        <span class="login100-form-title-1">Sign Up</span>
+      </div>
+      <form
+        class="login100-form"
+        #f="ngForm"
+        (ngSubmit)="f.form.valid && onRegister()"
+        [mustMatch]="['password', 'confirmPassword']"
+      >
+        <div
+          class="wrap-input100"
+          [ngClass]="{
+            'mb-3': !((f.submitted || email.touched) && email.invalid)
+          }"
+        >
+          <span class="label-input100">Email</span>
+          <input
+            class="input100"
+            type="email"
+            name="email"
+            [(ngModel)]="register.email"
+            placeholder="Enter Email"
+            #email="ngModel"
+            ngModel
+            required
+            email
+          />
+          <span class="focus-input100"></span>
+        </div>
+        <div
+          *ngIf="(f.submitted || email.touched) && email.invalid"
+          class="text-danger"
+        >
+          <small *ngIf="email.errors.required">Email is required.</small>
+          <small *ngIf="email.errors.email"
+            >Email must be a valid address.</small
+          >
+        </div>
+        <div
+          class="wrap-input100"
+          [ngClass]="{
+            'mb-3': !((f.submitted || password.touched) && password.invalid)
+          }"
+        >
+          <span class="label-input100">Password</span>
+          <input
+            class="input100"
+            type="password"
+            name="password"
+            [(ngModel)]="register.password"
+            placeholder="Enter Password"
+            #password="ngModel"
+            ngModel
+            minlength="6"
+            required
+          />
+          <span class="focus-input100"></span>
+        </div>
+        <div
+          *ngIf="(f.submitted || password.touched) && password.invalid"
+          class="text-danger"
+        >
+          <small *ngIf="password.errors.required">Password is required.</small>
+          <small *ngIf="password.errors.minlength"
+            >Password must be at least 6 characters.</small
+          >
+        </div>
+        <div
+          class="wrap-input100"
+          [ngClass]="{
+            'mb-3': !(
+              (f.submitted || confirmPassword.touched) &&
+              confirmPassword.invalid
+            )
+          }"
+        >
+          <span class="label-input100">Confirm Password</span>
+          <input
+            class="input100"
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="register.confirmPassword"
+            placeholder="Enter Password"
+            #confirmPassword="ngModel"
+            ngModel
+            minlength="6"
+            required
+          />
+          <span class="focus-input100"></span>
+        </div>
+        <div
+          *ngIf="
+            (f.submitted || confirmPassword.touched) && confirmPassword.invalid
+          "
+          class="text-danger"
+        >
+          <small *ngIf="confirmPassword.errors.required"
+            >Password is required.</small
+          >
+          <small *ngIf="confirmPassword.errors.minlength"
+            >Password must be at least 6 characters.</small
+          >
+          <small *ngIf="confirmPassword.errors.mustMatch">
+            Passwords must match
+          </small>
+        </div>
+        <div class="text-danger">
+          <small *ngIf="error">{{ error }}</small>
+        </div>
+        <div class="row col-sm-12 anchor">
+          <span>
+            Already have an account?
+            <a [routerLink]="['/login']" class="anchor"> Login here </a>
+          </span>
+        </div>
+        <div class="container-login100-form-btn mt-3">
+          <button type="submit" class="login100-form-btn">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
