@@ -24,3 +24,17 @@ function verifyToken(token) {
     decode !== undefined ? decode : err
   );
 }
+
+async function isAuthenticated(email, password) {
+  const db = JSON.parse(fs.readFileSync("./server/database.json", "UTF-8"));
+  const user = db.users.find((user) => user.email === email);
+  if (!user) {
+    return false;
+  }
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) {
+    return false;
+  }
+  return true;
+}
+
