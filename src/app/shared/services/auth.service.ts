@@ -19,6 +19,14 @@ export class AuthService {
   login(body: Login): Observable<Token> {
     return this.http.post<Token>(environment.apiBasePath + 'auth/login', body);
   }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.token = '';
+    this.router.navigate(['/login']);
+    localStorage.clear();
+  }
+
   constructor(private http: HttpClient, private router: Router) {
   }
 }
