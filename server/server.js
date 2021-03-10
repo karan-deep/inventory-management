@@ -18,3 +18,9 @@ const expiresIn = "2h";
 function createToken(payload) {
   return jwt.sign(payload, key, { expiresIn });
 }
+
+function verifyToken(token) {
+  return jwt.verify(token, key, (err, decode) =>
+    decode !== undefined ? decode : err
+  );
+}
