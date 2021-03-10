@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 export class AuthService {
   token: string;
   isLoggedIn: boolean;
+
+  register(body: Register) {
+    return this.http.post(environment.apiBasePath + 'auth/register', body);
+  }
+
   login(body: Login): Observable<Token> {
     return this.http.post<Token>(environment.apiBasePath + 'auth/login', body);
   }
