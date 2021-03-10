@@ -1,0 +1,228 @@
+<div class="container-fluid">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && saveInventory()">
+    <div class="modal-header">
+      <h4 class="modal-title txt-color-blueDark">{{ formState }} Inventory</h4>
+      <button
+        type="button"
+        class="close"
+        aria-hidden="true"
+        (click)="onCancel()"
+      >
+        &times;
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="form-label">Stock Number</label>
+              <input
+                type="number"
+                class="form-control"
+                name="stockNumber"
+                [ngClass]="{
+                  'is-invalid':
+                    stockNumber.invalid && (f.submitted || stockNumber.touched)
+                }"
+                [(ngModel)]="inventory.stockNumber"
+                placeholder="Enter Stock Number"
+                #stockNumber="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="
+                  stockNumber.invalid && (f.submitted || stockNumber.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="stockNumber.errors.required">
+                  Stock Number is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label">Model</label>
+              <input
+                type="text"
+                class="form-control"
+                name="model"
+                [ngClass]="{
+                  'is-invalid': model.invalid && (f.submitted || model.touched)
+                }"
+                [(ngModel)]="inventory.model"
+                placeholder="Enter Model"
+                #model="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="model.invalid && (f.submitted || model.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="model.errors.required">Model is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="form-label">Year</label>
+              <input
+                type="number"
+                class="form-control"
+                name="year"
+                [ngClass]="{
+                  'is-invalid': year.invalid && (f.submitted || year.touched)
+                }"
+                [(ngModel)]="inventory.year"
+                placeholder="Enter Year"
+                #year="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="year.invalid && (f.submitted || year.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="year.errors.required">Year is required.</div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label">Make</label>
+              <input
+                type="number"
+                class="form-control"
+                name="make"
+                [ngClass]="{
+                  'is-invalid': make.invalid && (f.submitted || make.touched)
+                }"
+                [(ngModel)]="inventory.make"
+                placeholder="Enter Make"
+                #make="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="make.invalid && (f.submitted || make.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="make.errors.required">Make is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="form-label">Trim</label>
+              <input
+                type="text"
+                class="form-control"
+                name="trim"
+                [ngClass]="{
+                  'is-invalid': trim.invalid && (f.submitted || trim.touched)
+                }"
+                [(ngModel)]="inventory.trim"
+                placeholder="Enter Trim"
+                #trim="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="trim.invalid && (f.submitted || trim.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="trim.errors.required">Trim is required.</div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label">Status</label>
+              <select
+                class="form-control"
+                name="status"
+                [ngClass]="{
+                  'is-invalid':
+                    status.invalid && (f.submitted || status.touched)
+                }"
+                [(ngModel)]="inventory.status"
+                #status="ngModel"
+                ngModel
+                required
+              >
+                <option value="undefined" disabled selected>
+                  Select a status
+                </option>
+                <option value="1">In Stock</option>
+                <option value="2">Sold</option>
+                <option value="3">Deal Pending</option>
+                <option value="4">In Trade</option>
+              </select>
+              <div
+                *ngIf="status.invalid && (f.submitted || status.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="status.errors.required">Status is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="form-label">VIN</label>
+              <input
+                type="text"
+                class="form-control"
+                name="VIN"
+                [ngClass]="{
+                  'is-invalid': VIN.invalid && (f.submitted || VIN.touched)
+                }"
+                [(ngModel)]="inventory.VIN"
+                placeholder="Enter VIN"
+                #VIN="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="VIN.invalid && (f.submitted || VIN.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="VIN.errors.required">
+                  VIN is required.{{ inventory.stockDate }}
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label">Stock Date</label>
+              <input
+                type="date"
+                class="form-control"
+                name="stockDate"
+                [ngClass]="{
+                  'is-invalid':
+                    stockDate.invalid && (f.submitted || stockDate.touched)
+                }"
+                [(ngModel)]="inventory.stockDate"
+                placeholder="Enter Stock Date"
+                #stockDate="ngModel"
+                ngModel
+                required
+              />
+              <div
+                *ngIf="stockDate.invalid && (f.submitted || stockDate.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="stockDate.errors.required">
+                  Stock Date is required.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger mr-2" (click)="onCancel()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
